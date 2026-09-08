@@ -4,100 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Sarah's Birthday Adventure</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
 </head>
 <body>
-
   <div id="game-container">
-
-    <!-- 1. PANTALLA DE INICIO -->
     <div id="screen-start" class="screen">
       <div class="title-container">
-        <img src="assets/logo-titulo.png" alt="Sarah's Birthday Adventure" class="img-title">
+        <img src="assets/old assets/logo-titulo.png" alt="Sarah's Birthday Adventure" class="img-title">
       </div>
-
       <div class="hero-art">
-        <img src="assets/castillo-bg.png" class="img-castillo" alt="Castillo">
-        <img src="assets/luigi-portada.png" class="img-luigi-cover" alt="Luigi">
+        <img src="assets/old assets/castillo-bg.png" class="img-castillo" alt="Castillo">
+        <img src="assets/old assets/luigi-portada.png" class="img-luigi-cover" alt="Luigi">
       </div>
-
       <div class="start-panel">
         <p class="panel-text">LUIGI NEEDS YOUR HELP!</p>
         <div class="start-btn-container">
-          <img src="assets/btn-start.png" id="btn-start" class="btn-start-img" alt="START">
-          <img src="assets/coin-slot.png" class="coin-slot-img" alt="Coin Slot">
+          <img src="assets/old assets/btn-start.png" id="btn-start" class="btn-start-img" alt="START">
+          <img src="assets/old assets/coin-slot.png" class="coin-slot-img" alt="Coin Slot">
         </div>
         <p class="insert-coin">INSERT COIN TO CONTINUE</p>
       </div>
     </div>
 
-    <!-- 2. POP-UP INSTRUCTIVO -->
-    <div id="modal-instructions" class="modal-overlay hidden">
-      <div class="modal-card">
-        <h3 class="modal-title">¿CÓMO JUGAR?</h3>
-        <p class="modal-text">Usá los botones en pantalla para moverte y saltar.<br><br>Recolectá las monedas amarillas. ¡Cuidado con las rojas que te quitan vida!</p>
-        <img src="assets/btn-start.png" id="btn-dismiss-instructions" class="btn-start-img" alt="Jugar">
-      </div>
-    </div>
-
-    <!-- 3. PANTALLA DE JUEGO -->
     <div id="screen-game" class="screen hidden">
-      <div class="hud-bar">
-        <div class="hud-item">
-          <span>LIVES:</span>
-          <div id="hud-hearts" class="hearts-container"></div>
-        </div>
-        <div class="hud-item">
-          <span>SCORE:</span>
-          <span id="hud-score">[0-10]</span>
-        </div>
-        <div class="hud-item">
-          <span>TIMER:</span>
-          <span id="hud-timer">[30s]</span>
-        </div>
-      </div>
-
-      <div class="level-subtitle">
-        <img src="assets/logo-titulo-quest.png" alt="Luigi's Green Quest" class="img-quest-logo">
-      </div>
-
-      <div class="canvas-wrapper">
-        <canvas id="game-canvas" width="360" height="240"></canvas>
-        <div class="crt-overlay"></div>
-      </div>
-
+      <div id="phaser-game"></div>
       <div class="gamepad-container">
         <div class="dpad-wrapper">
-          <img src="assets/btn-cruz.png" class="dpad-img" alt="D-Pad">
+          <img src="assets/controls/arrows.png" class="dpad-img" alt="D-Pad">
           <div id="btn-left" class="touch-zone zone-left"></div>
           <div id="btn-right" class="touch-zone zone-right"></div>
-          <div id="btn-up" class="touch-zone zone-up"></div>
-          <div id="btn-down" class="touch-zone zone-down"></div>
         </div>
-        <img src="assets/btn-a.png" id="btn-action-a" class="btn-a-img" alt="Botón A">
+        <img src="assets/old assets/btn-a.png" id="btn-action-a" class="btn-a-img" alt="Botón A">
       </div>
     </div>
 
-    <!-- 4. POP-UP GAME OVER -->
-    <div id="modal-gameover" class="modal-overlay hidden">
-      <div class="modal-card card-gameover">
-        <h3 class="title-gameover">GAME OVER</h3>
-        <p class="subtitle-gameover">¡INTÉNTALO DE NUEVO!</p>
-        <img src="assets/btn-start.png" id="btn-retry" class="btn-start-img" alt="Reintentar">
-      </div>
-    </div>
-
-    <!-- 5. PANTALLA DE VICTORIA -->
     <div id="screen-victory" class="screen hidden">
-      <div class="victory-header">
+      <div class="victory-card">
         <h1 class="victory-title">YOU DID IT!</h1>
         <h2 class="victory-subtitle">PARTY UNLOCKED!</h2>
+        <div class="details-box">
+          <p><strong>SARAH'S PARTY DETAILS:</strong></p>
+          <p>DATE: Saturday, October 26th</p>
+          <p>TIME: 7:00 PM</p>
+          <p>LOCATION: [Venue Address]</p>
+          <p>DRESS CODE: Green!</p>
+        </div>
+        <form id="rsvp-form" class="rsvp-form">
+          <input type="text" placeholder="Enter Your Name" required class="pixel-input">
+          <button type="submit" class="btn-accept">ACCEPT QUEST!</button>
+        </form>
       </div>
     </div>
-
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
