@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
+@font-face {
+  font-family: 'SuperMario';
+  src: url('assets/fonts/SuperMario.ttf') format('truetype');
+}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   user-select: none;
-  -webkit-user-select: none;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'SuperMario', monospace;
 }
-
 body {
   background-color: #0d0d0d;
   display: flex;
@@ -17,7 +17,6 @@ body {
   min-height: 100vh;
   color: #fff;
 }
-
 #game-container {
   width: 100%;
   max-width: 380px;
@@ -30,7 +29,6 @@ body {
   border: 4px solid #000;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
-
 .screen {
   width: 100%;
   height: 100%;
@@ -39,32 +37,25 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
 }
-
 .hidden {
   display: none !important;
 }
-
-/* PANTALLA DE INICIO */
 #screen-start {
   background-color: #5c94fc;
   justify-content: space-between;
   align-items: center;
   padding-top: 15px;
 }
-
 .title-container {
   z-index: 5;
   text-align: center;
 }
-
 .img-title {
   max-width: 80%;
   height: auto;
   image-rendering: pixelated;
 }
-
 .hero-art {
   width: 100%;
   height: 240px;
@@ -73,7 +64,6 @@ body {
   justify-content: center;
   align-items: flex-end;
 }
-
 .img-castillo {
   position: absolute;
   bottom: 0;
@@ -82,7 +72,6 @@ body {
   object-fit: contain;
   image-rendering: pixelated;
 }
-
 .img-luigi-cover {
   position: absolute;
   bottom: 0;
@@ -91,7 +80,6 @@ body {
   z-index: 3;
   image-rendering: pixelated;
 }
-
 .start-panel {
   width: 100%;
   background-color: #703800;
@@ -103,179 +91,122 @@ body {
   gap: 12px;
   z-index: 5;
 }
-
 .panel-text {
   color: #fff;
   font-size: 9px;
 }
-
 .start-btn-container {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 .btn-start-img {
   cursor: pointer;
   image-rendering: pixelated;
   max-height: 40px;
 }
-
 .btn-start-img:active {
   transform: scale(0.95);
 }
-
 .coin-slot-img {
   max-height: 40px;
   image-rendering: pixelated;
 }
-
 .insert-coin {
   font-size: 8px;
   color: #fff;
   animation: blink 1s infinite;
 }
-
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-
-/* JUEGO */
 #screen-game {
-  background-color: #92d050;
+  background-color: #5c94fc;
   justify-content: space-between;
 }
-
-.hud-bar {
-  background-color: #c6efce;
-  border-bottom: 3px solid #000;
-  padding: 8px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 8px;
-  color: #000;
-}
-
-.hud-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.hearts-container {
-  display: flex;
-  gap: 2px;
-}
-
-.hud-heart-img {
-  width: 12px;
-  height: 12px;
-  image-rendering: pixelated;
-}
-
-.level-subtitle {
-  background-color: #92d050;
-  text-align: center;
-  padding: 6px 0;
-}
-
-.img-quest-logo {
-  max-height: 18px;
-  image-rendering: pixelated;
-}
-
-.canvas-wrapper {
-  position: relative;
+#phaser-game {
   width: 100%;
-  height: 240px;
-  background-color: #92d050;
+  height: 520px;
 }
-
-#game-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 .gamepad-container {
   background-color: #92d050;
-  padding: 15px 30px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-top: 3px solid #000;
+  height: 160px;
 }
-
 .dpad-wrapper {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
 }
-
 .dpad-img {
   width: 100%;
   height: 100%;
   image-rendering: pixelated;
 }
-
 .touch-zone {
   position: absolute;
   cursor: pointer;
 }
-
-.zone-left { top: 30px; left: 0; width: 30px; height: 30px; }
-.zone-right { top: 30px; right: 0; width: 30px; height: 30px; }
-.zone-up { top: 0; left: 30px; width: 30px; height: 30px; }
-.zone-down { bottom: 0; left: 30px; width: 30px; height: 30px; }
-
+.zone-left { top: 30px; left: 0; width: 35px; height: 40px; }
+.zone-right { top: 30px; right: 0; width: 35px; height: 40px; }
 .btn-a-img {
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   image-rendering: pixelated;
 }
-
 .btn-a-img:active {
   transform: scale(0.92);
 }
-
-/* MODALES */
-.modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
+#screen-victory {
+  background-color: #5c94fc;
+  padding: 20px;
   justify-content: center;
   align-items: center;
-  z-index: 10;
-  padding: 15px;
 }
-
-.modal-card {
-  background-color: #fff;
+.victory-card {
+  background-color: #f8f8f8;
   color: #000;
   border: 4px solid #000;
-  padding: 20px 15px;
-  width: 100%;
-  max-width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 15px;
   text-align: center;
-  gap: 15px;
+  width: 100%;
 }
-
-.modal-title {
-  color: #00a81b;
-  font-size: 11px;
+.victory-title {
+  color: #00a800;
+  font-size: 14px;
 }
-
-.modal-text {
+.victory-subtitle {
+  color: #f88800;
+  font-size: 10px;
+  margin-bottom: 12px;
+}
+.details-box {
+  background-color: #e0e0e0;
+  border: 2px solid #000;
+  padding: 10px;
   font-size: 8px;
-  line-height: 1.5;
+  text-align: left;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.pixel-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 8px;
+  border: 2px solid #000;
+  margin-bottom: 10px;
+}
+.btn-accept {
+  background-color: #00a800;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 8px 15px;
+  font-size: 10px;
+  cursor: pointer;
 }
